@@ -13,7 +13,6 @@
                         <th>ID</th>
                         <th>Url_Text</th>
                         <th>Code</th>
-                        <th>User id</th>
                         <th>Number of click</th>
                     </tr>
                 </thead>
@@ -23,7 +22,6 @@
                         <td>{{ $url->id }} </td>
                         <td>{{ $url->url_text }}</td>
                         <td><a href="{{ route('shorten.link', $url->code )}}" target="_blank">{{ $url->code }}</a></td>
-                        <td>{{ $url->user_id }}</td>
                         <td>{{ $url->count }}</td>
                     </tr>
                     @endforeach

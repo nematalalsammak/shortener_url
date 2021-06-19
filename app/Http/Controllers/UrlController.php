@@ -19,19 +19,19 @@ class UrlController extends Controller
      */
     public function index(Request $request)
     {
-        $user=User::all();
-        $urls=Url::with('user')->get();
+        //$user=User::all();
+        //$urls=Url::with('user')->get();
 
-        /*$urls=Url::all();
-        $user=User::with('urls');*/
+        //$urls=Url::all();
+        //$user=User::with('urls');
 
-        /*$urls=Url::when($request->id,function($query,$value){
+        $urls=Url::when($request->id,function($query,$value){
         $query->where('urls.user_id','=',$value);    
-        })->with('user')->get();*/
+        })->Clicks(2)->get();
 
         return view('dashboard', [
             'urls' =>  $urls, 
-            'user'=> $user,
+            //'user'=> $user,
         ]);
 
     }
@@ -62,7 +62,7 @@ class UrlController extends Controller
         $url->user_id = auth()->user()->id;
         $url->save();
 
-        return redirect('/index')
+        return redirect('/dashboard')
             ->with('success', 'url Added!');
     }
 

@@ -24,12 +24,14 @@ Route::get('/', function () {
 })->middleware(['auth'])->name('dashboard');*/
 
 Route::get('/dashboard',[UrlController::class, 'index'])
+->middleware(['auth'])
 ->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 //Route::get('/index', [UrlController::class, 'index'])->name('index');
-Route::get('/create', [UrlController::class, 'create'])->name('create');
+Route::get('/create', [UrlController::class, 'create'])
+->middleware(['auth'])->name('create');
 Route::post('/create', [UrlController::class, 'store'])->name('store');
 Route::get('{code}', [UrlController::class,'shortenLink'])->name('shorten.link');
 
